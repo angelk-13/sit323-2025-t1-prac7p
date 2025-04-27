@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: items-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: items-api
+  template:
+    metadata:
+      labels:
+        app: items-api
+    spec:
+      containers:
+        - name: items-api
+          image: items-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URI
+              value: mongodb://appuser:apppassword@mongodb-service:27017/myappdb?authSource=myappdb
