@@ -29,7 +29,7 @@ metadata:
   name: mongo-init-script
 data:
   init.js: |
-    // run on first start: create your application DB & user
+    // runs on first start, creates application DB & user
     db = db.getSiblingDB('myappdb');
     db.createUser({
       user: 'appuser',
